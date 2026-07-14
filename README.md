@@ -7,11 +7,15 @@ I chose this design because it keeps the prototype focused on the core problem: 
 
 The layered structure keeps the responsibilities clear. The controller handles HTTP requests and responses, the service owns the state machine and recovery logic, the repository handles storage, and the payment gateway is stubbed behind an interface. This made the important behavior easy to test while still leaving clear places to replace the prototype pieces with production-ready implementations later.
 
+### AI Use
+For this project my primary use of AI was as a discussion partner for the system design. I also used it for the base project wireframe, just to cut out the tedious process.
+
+I primarily verified these responses through personal code review or verification through online research if discussing topics I wasn't familiar with.
 
 ## Tradeoffs
 ```Multi-purpose endpoint vs Semantic routing (for advancing state routes)```
 - Choice: I routed authorized payment and complete order through the same endpoint
-- Tradeoff: Keeps route management simple and quick to implement. But, it makes it difficult and messy to add distinct logic like middleware vs dedicated routes.
+- Tradeoff: Keeps route management simple and easy to review. But, it makes it difficult and messy to add distinct logic like middleware vs dedicated routes.
 
 ```In memory storage vs Real database```
 - Choice: In memory storage

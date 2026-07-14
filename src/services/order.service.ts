@@ -9,7 +9,6 @@ export default class OrderService {
     // For the prototype, order completion is stubbed so tests can force success or failure.
     constructor(private readonly repository: OrderRepository, private readonly payment: PaymentGateway, private readonly completionResult: CompletionResult = 'success') {}
 
-
     private readonly validTransitions: Record<OrderState, Set<OrderState>> = {
         initialized: new Set(["payment_authorized", "rejected"]),
         payment_authorized: new Set(["complete", "cancelled", "needs_attention"]),
